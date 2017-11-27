@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Solutions {
     
-    private LinkedList q ;
+    private Queue q ;
     
     public Solutions () {
         q = new LinkedList <Integer> ();
@@ -39,12 +39,14 @@ public class Solutions {
     }
     
     public static void main(String []args){
-        int graph[][] = new int[][] {{0, 1, 0, 1, 0,1},
-                                    {1, 0, 1, 1, 1, 0},
-                                    {0, 1, 0, 0, 1, 0},
-                                    {1, 1, 0, 0, 1, 0},
-                                    {0, 1, 1, 1, 0, 0},
-                                    {0, 1, 0, 1, 0, 1},
+        int graph[][] = new int[][] {{0, 1, 0, 0, 0, 1, 0, 0}, 
+                                    {1, 0, 1, 1, 1, 0, 0, 0},  
+                                    {0, 1, 0, 0, 0, 0, 0, 0},
+                                    {0, 1, 0, 0, 0, 0, 0, 0},
+                                    {0, 1, 0, 0, 0, 0, 0, 0},
+                                    {1, 0, 0, 0, 0, 0, 1, 1},
+                                    {0, 0, 0, 0, 0, 1, 0, 0},
+                                    {0, 0, 0, 0, 0, 1, 0, 0},
                                    };
                                   
         Solutions s = new Solutions();

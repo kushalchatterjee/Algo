@@ -1,3 +1,8 @@
+// DepthFirstSearch of Graph using adjacency metrics.
+//Graph is represented in two different ways - adjacency metrics & adjacency list
+//The following implementation uses adjacency metrics for an unweighted graph
+//The time complexity is O(V+E) where V is the number of vertices and E is the number of edges.
+
 import java.util.*;
 
 public class Solutions {

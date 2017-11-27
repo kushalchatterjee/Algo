@@ -1,0 +1,51 @@
+import java.util.*;
+
+public class Solutions {
+    
+    private Stack s ;
+    
+    public Solutions () {
+        s = new Stack <Integer> ();
+    }
+    
+    
+    public void doDFS ( int[][] myGraph, int source ){
+        int len = myGraph.length ;
+        int i = 0;
+        int visited [] = new int [len];
+        visited[source] = 1;
+        
+        s.push(source);
+        while ( !s.isEmpty () ) {
+            int node = (int) s.pop();
+            i=node;
+            System.out.print(i + "\t");
+            while ( i< len) {
+            if (myGraph[node][i]==1  && visited[i] == 0) {
+                    s.push(i);
+                    visited [i] = 1;
+                }
+                i++;
+            }
+            
+        }
+        
+       
+    }
+    
+    public static void main(String []args){
+        int graph[][] = new int[][] {{0, 1, 0, 0, 0, 1, 0, 0},
+                                    {1, 0, 1, 1, 1, 0, 0, 0},
+                                    {0, 1, 0, 0, 0, 0, 0, 0},
+                                    {0, 1, 0, 0, 0, 0, 0, 0},
+                                    {0, 1, 0, 0, 0, 0, 0, 0},
+                                    {1, 0, 0, 0, 0, 0, 1, 1},
+                                    {0, 0, 0, 0, 0, 1, 0, 0},
+                                    {0, 0, 0, 0, 0, 1, 0, 0},
+                                   };
+                                  
+        Solutions s = new Solutions();
+        s.doDFS(graph, 0);                           
+        
+     }
+}

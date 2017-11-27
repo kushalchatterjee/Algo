@@ -1,0 +1,54 @@
+// BreadthFirstSearch of Graph using adjacency metrics.
+//Graph is represented in two different ways - adjacency metrics & adjacency list
+//The following implementation uses adjacency metrics fir an unweighted graph
+//The time complexity is O(V+E) where V is the number of vertices and E is the number of edges.
+
+import java.util.*;
+
+public class Solutions {
+    
+    private LinkedList q ;
+    
+    public Solutions () {
+        q = new LinkedList <Integer> ();
+    }
+    
+    
+    public void doBFS ( int[][] myGraph, int source ){
+        int len = myGraph.length ;
+        int i = 0;
+        int visited [] = new int [len];
+        visited[source] = 1;
+        
+        q.add(source);
+        while ( !q.isEmpty () ) {
+            int node = (int) q.remove();
+            i=node;
+            System.out.print(i + "\t");
+            while ( i< len) {
+            if (myGraph[node][i]==1  && visited[i] == 0) {
+                    q.add(i);
+                    visited [i] = 1;
+                }
+                i++;
+            }
+            
+        }
+        
+       
+    }
+    
+    public static void main(String []args){
+        int graph[][] = new int[][] {{0, 1, 0, 1, 0,1},
+                                    {1, 0, 1, 1, 1, 0},
+                                    {0, 1, 0, 0, 1, 0},
+                                    {1, 1, 0, 0, 1, 0},
+                                    {0, 1, 1, 1, 0, 0},
+                                    {0, 1, 0, 1, 0, 1},
+                                   };
+                                  
+        Solutions s = new Solutions();
+        s.doBFS(graph, 0);                           
+        
+     }
+}

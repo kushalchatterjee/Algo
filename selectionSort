@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class Solution{
+    public ArrayList <Integer> arr;
+    Solution (){
+        arr = new ArrayList <Integer> ();
+    }
+    
+    public void sort (){
+        int len = arr.size();
+        for ( int i=0; i< len; i++){
+            for (int j=i+1; j< len; j++) {
+                if ( arr.get(j) < arr.get(i)) {
+                    int tmp= arr.get(j);
+                    arr.set(j,arr.get(i));
+                    arr.set(i,tmp);
+                }
+            }
+        }
+        
+    }
+    
+    public void print_list(){
+        for ( int k=0; k< arr.size(); k++) 
+        System.out.println ("Value :" + arr.get(k));
+    }
+    
+     public static void main(String []args){
+        
+        Solution s = new Solution ();
+        s.arr.add(11);
+        s.arr.add(4);
+        s.arr.add(6);
+        s.arr.add(8);
+        s.arr.add(3);
+        s.print_list();
+        s.sort();
+        System.out.println ("Printing after sort");
+        s.print_list();
+        
+        
+     }
+}

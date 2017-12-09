@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution{
+public class InsertionSort{
     public ArrayList <Integer> arr;
     Solution (){
         arr = new ArrayList <Integer> ();

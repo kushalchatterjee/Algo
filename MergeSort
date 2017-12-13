@@ -1,0 +1,95 @@
+public class MergeSort{
+    public Node head = null;
+    
+    public class Node {
+        int val;
+        Node next;
+        
+        
+        public Node () {//Constructor
+            val = 0;
+            next = null;
+        }
+        public Node (int i) { //constructor
+            val = i;
+            next = null;
+        }
+    
+        
+    }
+    public void insert ( int i) { //inserts node at the beginning
+        Node n = new Node(i);
+        n.next = head;
+        head = n;
+    }
+    
+    public void printList (Node head) {
+        while (head != null) {
+            System.out.println (head.val);
+            head = head.next;
+        }
+    }
+    
+    public Node sort (Node head) {
+        if ( head == null || head.next ==null ) return head; // no need to sort if there's no node or only one node in the Linked List
+        Node mid = find_Mid (head); // find middle of the LinkedList
+        Node sHalf = mid.next ; mid.next = null; //Splitting into two linked lists
+        Node  h = merge ( sort(head), sort(sHalf) ); //Call merge recursively
+        return h;
+        
+    }
+    
+    public Node merge ( Node n1 , Node n2) {
+        Node curr = null;
+        
+        if ( n1 == null )
+            return n2; //n1 empty
+        if ( n2 == null )
+            return n1; // n2 empty
+       
+            
+            if ( n1.val < n2.val ) { 
+                
+                 curr=n1; 
+                 curr.next = merge (n1.next, n2); //Call merge recursively
+            
+            }
+            else { 
+                
+                curr = n2; 
+                curr.next = merge (n1, n2.next); //Call merge recursively
+            }
+        
+        return curr;
+        
+    }
+    
+    public Node find_Mid (Node head) {
+        Node slow = head; Node fast = head;
+        
+        while ( fast.next != null && fast.next.next != null ) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        return slow;
+    }
+
+     public static void main(String []args){
+        System.out.println("Hello World");
+        MergeSort m = new MergeSort ();
+        m.insert ( 3 );
+        m.insert ( 4 );
+        m.insert ( 16 );
+        m.insert ( 10 );
+        m.insert ( 5 );
+        m.insert ( 1 );
+        m.insert ( -5 );
+        m.printList(m.head);
+        Node n = m.find_Mid (m.head);
+        System.out.println("Middle is :" + n.val);
+        m.head = m.sort(m.head);
+        m.printList(m.head);
+        
+     }
+}

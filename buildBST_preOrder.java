@@ -100,8 +100,8 @@ public class buildBST_preOrder {
         
         if ( root == null ) return;
         System.out.print (root.val+ " ");
-        inorderTraversal (root.left);
-        inorderTraversal (root.right);
+        preorderTraveral (root.left);
+        preorderTraveral (root.right);
         
     }
     
@@ -109,8 +109,8 @@ public class buildBST_preOrder {
         
         
         if ( root == null ) return;
-        inorderTraversal (root.left);
-        inorderTraversal (root.right);
+        postorderTraveral (root.left);
+        postorderTraveral (root.right);
         System.out.print (root.val+ " ");
         
     }

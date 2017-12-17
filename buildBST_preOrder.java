@@ -1,4 +1,3 @@
-// WORK IN PROGRESS ( NEED TO TEST ) 
 //Build a BST from an array which is a preOrder Traversal
 // The steps are -
 // 1. The first element is root

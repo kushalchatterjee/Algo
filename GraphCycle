@@ -1,0 +1,97 @@
+// The program attempts to find a cycle in a graph using recursion
+// The complexitiy is O(V+E) where V is number of vertices and E is number of edges
+
+import java.util.*;
+
+public class GraphCycle{
+    int V;  // No. of vertices
+    LinkedList<Integer>[] adj;  //Adjacency List
+
+    
+    //Constructor
+    public GraphCycle(int v) {
+        this.V=v;
+        this.adj = new LinkedList[v];
+        for (int i=0;i<v;i++) {
+            adj[i] = new LinkedList<Integer>();
+        }
+    
+       
+    }
+
+    // function to add an edge to graph
+    public void addEdge(int v, int w){
+        adj[v].add(w);
+
+    }
+
+    // Main recursive function to find if the graph has cycle
+    
+    public boolean isCyclicUtil (int v, boolean visited [], int parent) {
+        visited[v]=true;
+        
+        Integer i; //Find adjacent nodes
+        
+        Iterator<Integer> itr = adj[v].iterator();
+        
+        while ( itr.hasNext() ){
+            i = itr.next();
+            if ( !visited[i] ) { //if adjacent node is ot visited yet, run the method recursively
+                if (isCyclicUtil (i, visited, v) )
+                    return true;
+            }
+            // if adjacent node is visited and not parent then there's a node
+            else if ( i != parent)
+                return true;
+        } 
+        
+        return false;
+    }
+    
+    public boolean isCyclic () {
+        
+        boolean[] visited = new boolean[V];   //Boolean array to store the visited nodes
+        
+        for ( int i=0; i<V; i++ ) {
+            visited[i] = false;
+        }
+        
+        for ( int u=0; u<V; u++ ) {
+            if ( !visited[u] )
+                if( isCyclicUtil (u, visited, -1) )
+                    return true;
+                
+        }
+        return false;        
+        
+    }
+
+
+    // Driver program to test above functions
+    public static void main(String[] args) {
+       
+
+        System.out.println("Finding cycle");
+        
+        GraphCycle g1 = new GraphCycle(5);
+        g1.addEdge(1, 0);
+        g1.addEdge(0, 2);
+        g1.addEdge(2, 0);
+        g1.addEdge(0, 3);
+        g1.addEdge(3, 4);
+        if (g1.isCyclic())
+            System.out.println("Graph contains cycle");
+        else
+            System.out.println("Graph doesn't contains cycle");
+            
+        GraphCycle g2 = new GraphCycle(3);
+        g2.addEdge(0, 1);
+        g2.addEdge(1, 2);
+        if (g2.isCyclic())
+            System.out.println("Graph contains cycle");
+        else
+            System.out.println("Graph doesn't contains cycle");
+
+        
+    }
+}
